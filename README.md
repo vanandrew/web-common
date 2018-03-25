@@ -6,6 +6,12 @@ A common website backend for all my lab website projects
 
 /labsite: contains the main django project  
 /common: application for the lab website
+/static: resources for website
+
+#### Requirements
+
+* django 2.0.3
+* django-grappelli 2.11.1
 
 #### Overview
 
