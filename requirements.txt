@@ -1,0 +1,3 @@
+# package requirements
+Django == 2.0.3
+django-grappelli == 2.11.1
