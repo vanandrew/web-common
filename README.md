@@ -10,8 +10,10 @@ A common website backend for all my lab website projects
 
 #### Requirements
 
-* django 2.0.3
-* django-grappelli 2.11.1
+* django == 2.0.3
+* django-grappelli == 2.11.1
+* pillow == 5.0.0
+* gunicorn
 
 #### Overview
 
