@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dropbox
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -92,7 +93,12 @@ DATABASES = {
     }
 }
 # Use the DATABASE_URL env variable
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+try:
+    if os.environ['PRODUCTION'] == "TRUE":
+        DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+        print('DATABASE has been set to heroku postgres.')
+except KeyError:
+    print('No PRODUCTION Variable found')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -129,6 +135,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+# Set default file storage
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+
+# Set Dropbox OAUTH TOKEN
+DROPBOX_OAUTH2_TOKEN = 'vmL3v7wZeFIAAAAAAAAMF4Rvnk-xtUvWWdR7HxBsmbb_iYIZvmE-5NpDq6rJ4I5I'
+
+# Set Dropbox Path
+DROPBOX_ROOT_PATH = '/App/'
 
 # Set static and media directories
 STATIC_URL = '/static/'
