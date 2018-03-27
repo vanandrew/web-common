@@ -140,10 +140,13 @@ USE_TZ = True
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
 # Set Dropbox OAUTH TOKEN
-DROPBOX_OAUTH2_TOKEN = 'vmL3v7wZeFIAAAAAAAAMF4Rvnk-xtUvWWdR7HxBsmbb_iYIZvmE-5NpDq6rJ4I5I'
+try:
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_TOKEN']
+except KeyError:
+    print('Dropbox token not defined!')
 
 # Set Dropbox Path
-DROPBOX_ROOT_PATH = '/Apps/caterina-website'
+DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
 
 # Set static directory
 STATIC_URL = '/static/'
