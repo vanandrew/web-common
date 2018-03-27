@@ -4,3 +4,9 @@
 {% block people %}
 active
 {% endblock %}
+
+{% block content %}
+    {% for person in members %}
+        <img src="{{ person.photo.url }}">
+    {% endfor %}
+{% endblock %}

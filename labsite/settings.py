@@ -98,7 +98,7 @@ try:
         DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
         print('DATABASE has been set to heroku postgres.')
 except KeyError:
-    print('No PRODUCTION Variable found')
+    pass
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -143,10 +143,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = 'vmL3v7wZeFIAAAAAAAAMF4Rvnk-xtUvWWdR7HxBsmbb_iYIZvmE-5NpDq6rJ4I5I'
 
 # Set Dropbox Path
-DROPBOX_ROOT_PATH = '/App/'
+DROPBOX_ROOT_PATH = '/Apps/caterina-website'
 
-# Set static and media directories
+# Set static directory
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
