@@ -34,7 +34,7 @@ def publications_page(request):
 # news
 def news_page(request):
     news = news_item.objects.all()
-    return render(request, 'common/news.html',{'news_item': news_item})
+    return render(request, 'common/news.html',{'news': news})
 
 # data
 def data_page(request):

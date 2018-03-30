@@ -6,7 +6,7 @@ active
 {% endblock %}
 
 {% block content %}
-    {% for item in news_item %}
+    {% for item in news %}
         <h2>{{ item.title }}</h2>
         {{ item.content }}
     {% endfor %}
