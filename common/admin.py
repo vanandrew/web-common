@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import (lab_member, publication,
-    publication_link, job_listing, current_study,
+from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from .models import (lab_member, publication, publication_link,
+    news_item, job_listing, current_study,
     data_listing, software_listing)
 
 # admin for lab member model
@@ -44,6 +46,17 @@ class publicationadmin(admin.ModelAdmin):
     inlines = (publicationlinkinline,)
     search_fields = ('title','container','date',)
     save_as = True
+
+# news item form
+class newsitemform(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+    class Meta:
+        model = news_item
+        fields = '__all__'
+
+# news item
+class newsitemadmin(admin.ModelAdmin):
+    form = newsitemform
 
 # job listing
 class joblistingadmin(admin.ModelAdmin):
@@ -111,6 +124,7 @@ class softwarelistingadmin(admin.ModelAdmin):
 # dlabsite models
 admin.site.register(lab_member, labmemberadmin)
 admin.site.register(publication, publicationadmin)
+admin.site.register(news_item, newsitemadmin)
 admin.site.register(job_listing, joblistingadmin)
 admin.site.register(current_study, currentstudyadmin)
 admin.site.register(data_listing, datalistingadmin)

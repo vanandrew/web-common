@@ -1,5 +1,6 @@
 import os, datetime
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create class for lab member
 class lab_member(models.Model):
@@ -121,6 +122,25 @@ class publication_link(models.Model):
     # Return the name of the model
     def __str__(self):
         return self.link
+
+# Create class for news item
+class news_item(models.Model):
+    class Meta:
+        verbose_name = "News Item"
+
+    # news title
+    title = models.CharField(
+        max_length = 350,
+        unique = True,
+        verbose_name = "Title"
+    )
+
+    # content
+    content = RichTextUploadingField()
+
+    # title
+    def __str__(self):
+        return self.title
 
 # Create class for job listing
 class job_listing(models.Model):

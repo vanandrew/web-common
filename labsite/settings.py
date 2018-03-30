@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig'
+    'common.apps.CommonConfig',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,10 @@ except KeyError:
 
 # Set Dropbox Path
 DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
+
+# Set ckeditor settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # Set static directory
 STATIC_URL = '/static/'

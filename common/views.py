@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import (lab_member, publication, job_listing,
+from .models import (lab_member, publication, news_item, job_listing,
     current_study, data_listing, software_listing)
 from datetime import datetime
 import json
@@ -30,6 +30,11 @@ def publications_page(request):
     dateobjs = publication.objects.dates('date','year',order='DESC')
     years = [date.year for date in dateobjs]
     return render(request, 'common/publications.html', {'publications': publications, 'years': years})
+
+# news
+def news_page(request):
+    news = news_item.objects.all()
+    return render(request, 'common/news.html',{'news_item': news_item})
 
 # data
 def data_page(request):
