@@ -86,12 +86,8 @@ WSGI_APPLICATION = 'labsite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'labbase',
-        'USER': 'labowner',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test.db'
     }
 }
 # Use the DATABASE_URL env variable
@@ -138,17 +134,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-# Set default file storage
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-
-# Set Dropbox OAUTH TOKEN
+# Set Dropbox OAUTH TOKEN and file storage only if defined
 try:
+    # set the token
     DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_TOKEN']
+    # Set default file storage
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    # Set Dropbox Path
+    DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
 except KeyError:
     print('Dropbox token not defined!')
-
-# Set Dropbox Path
-DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
 
 # Set ckeditor settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
