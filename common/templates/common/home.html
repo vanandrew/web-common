@@ -1,6 +1,212 @@
 {% extends 'common/base.html' %}
 {% load staticfiles %}
 
-{% block homepage %}
-active
+{% block head %}
+<style>
+/* Set link colors to inherit */
+a {
+    color: inherit;
+}
+a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.nopad {
+    padding-left:0;
+    padding-right:0;
+    overflow-x: hidden;
+}
+.title {
+    height: 100vh;
+}
+.main-col {
+    -webkit-transition: max-width 1s, flex 1s;
+    -webkit-transition-delay: 1s;
+    transition: max-width 1s, flex 1s;
+    transition-delay: 1s;
+}
+.link-block {
+    height: 33.33vh;
+    -webkit-transition: height 1s;
+    transition: height 1s;
+}
+.link-block > .col-6 > .row.align-items-center {
+    height: 100%;
+}
+/* Set Animation for link block selection */
+.link-block > .col-6 {
+    -webkit-transition: max-width 1s, flex 1s;
+    transition: max-width 1s, flex 1s;
+}
+.link-block:hover > .col-6 { /* Collapse row on hover */
+    max-width: 10%;
+    flex: 0 0 10%;
+}
+.link-block > .col-6 > .row > .col > h2 { /* Set Animation for hiding text*/
+    -webkit-transition: visibility 0.5s, opacity 0.5s;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+.link-block:hover > .col-6 > .row > .col > h2 { /* Hide text*/
+    visibility: hidden;
+    opacity: 0;
+}
+.link-to-page { /* Set link to fill box */
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+}
+/* Show each block and its text */
+.link-box.people:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.people:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+.link-box.publications:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.publications:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+.link-box.research:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.research:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+.link-box.news:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.news:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+/* Not yet used; rename in future */
+.link-box.cs1:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.cs1:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+.link-box.cs2:hover {
+    max-width: 90%;
+    flex: 0 0 90%;
+}
+.link-box.cs2:hover > .row > .col > h2 {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+{% endblock %}
+
+{% block homepage %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid nopad">
+    <div class="row no-gutters">
+        <div class="col-lg-6 main-col">
+            <div class="row align-items-center no-gutters title">
+                <div class="col">
+                    <h1 class="display-1 text-center" id="title-text">Gratton Lab</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 main-col">
+            <div class="row align-items-center no-gutters link-block" id="row1">
+                <div class="col-6 link-box people">
+                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                        <a class="link-to-page" href="{% url 'common:people' %}"></a>
+                        <div class="col">
+                            <h2 class="text-center" style="color:white;">People</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 link-box publications">
+                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                        <a class="link-to-page" href="{% url 'common:publications' %}"></a>
+                        <div class="col">
+                            <h2 class="text-center">Publications</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center no-gutters link-block" id="row2">
+                <div class="col-6 link-box research">
+                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                        <a class="link-to-page" href="{% url 'common:research' %}"></a>
+                        <div class="col">
+                            <h2 class="text-center">Research</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 link-box news">
+                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                        <a class="link-to-page" href="{% url 'common:news' %}"></a>
+                        <div class="col">
+                            <h2 class="text-center" style="color:white;">News</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center no-gutters link-block" id="row3">
+                <div class="col-6 link-box cs1">
+                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                        <a class="link-to-page" href="/"></a>
+                        <div class="col">
+                            <h2 class="text-center" style="color:white;">Coming Soon...</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 link-box cs2">
+                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                        <a class="link-to-page" href="/"></a>
+                        <div class="col">
+                            <h2 class="text-center">Coming Soon...</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$('.link-to-page').click(function(event){
+    // Prevent default redirect
+    event.preventDefault();
+    // Hide link
+    $(event.target).hide();
+    // Make current selection persist
+    $(event.target).parent().parent().css({"max-width":"100%","flex":"0 0 100%"});
+    // Make current selection text stay appeared
+    $(event.target).siblings(".col").children("h2").css({"visibility":"visible","opacity":"1"});
+    // Make other box disappear within the same row
+    $(event.target).parent().parent().siblings().css({"max-width":"0%","flex":"0 0 0%"});
+    // Make text disappear//Collapse title column and its text
+    $(event.target).parent().parent().siblings().children().children(".col").children("h2").css({"visibility":"hidden","opacity":"0","display":"none"});
+    // Collapse height of non selected row while expanding selected row
+    $(event.target).parent().parent().parent().css({"height":"100vh"});
+    $(event.target).parent().parent().parent().siblings().css({"height":"0"})
+    // Make text of those rows disappear
+    $(event.target).parent().parent().parent().siblings().children().children().children(".col").children("h2").css({"visibility":"hidden","opacity":"0","display":"none"});
+    // Expand main column
+    $(event.target).parent().parent().parent().parent().css({"max-width":"100%","flex":"0 0 100%"})
+    //Collapse title column and its text
+    $(event.target).parent().parent().parent().parent().siblings().css({"max-width":"0%","flex":"0 0 0%"})
+    $("#title-text").fadeOut(500);
+
+});
+</script>
 {% endblock %}

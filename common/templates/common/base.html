@@ -9,10 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Lab</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block head %}
+        {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'common:homepage' %}">Lab</a>
+        <nav class="navbar fixed-top navbar-light" style="background-color:rgba(0,0,0,0);">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
