@@ -1,10 +1,23 @@
 {% extends 'common/base.html' %}
 {% load staticfiles %}
 
+
+
 {% block people %}active{% endblock %}
 
 {% block content %}
+    <div class="container-fluid nopad pagefade">
+        <div class="row align-items-center no-gutters title">
+            <div class="col">
+                <h1 class="display-4 black-text animated fadeInLeft section-title">people</div>
+            </div>
+        </div>
+    </div>
     {% for person in members %}
         <img src="{{ person.photo.url }}">
     {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'common/js/pagefade.js' %}"></script>
 {% endblock %}

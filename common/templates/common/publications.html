@@ -2,3 +2,17 @@
 {% load staticfiles %}
 
 {% block publications %}active{% endblock %}
+
+{% block content %}
+    <div class="container-fluid nopad pagefade">
+        <div class="row align-items-center no-gutters title">
+            <div class="col-2">
+                <h1 class="display-4 black-text animated fadeInLeft section-title">publications</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'common/js/pagefade.js' %}"></script>
+{% endblock %}
