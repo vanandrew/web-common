@@ -18,6 +18,7 @@ a:hover {
 }
 .title {
     height: 100vh;
+    background: #333;
 }
 .main-col {
     -webkit-transition: max-width 1s, flex 1s;
@@ -49,6 +50,7 @@ a:hover {
 .link-block:hover > .col-6 > .row > .col > h2 { /* Hide text*/
     visibility: hidden;
     opacity: 0;
+    overflow: hidden;
 }
 .link-to-page { /* Set link to fill box */
     height: 100%;
@@ -106,6 +108,46 @@ a:hover {
     visibility: visible;
     opacity: 1;
 }
+/* Set backgrounds for each block */
+.link-box > div > .background {
+    -webkit-transition: -webkit-filter 0.5s;
+    transition: filter 0.5s;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.people > div > .background {
+    background-image: url("{% static 'common/imgs/SpringEmbedded_hubs.png' %}");
+    -webkit-filter: brightness(0.3);
+    filter: brightness(0.3);
+}
+.publications > div > .background {
+    background-image: url("{% static 'common/imgs/neuron_cover.png' %}");
+    -webkit-filter: brightness(0.75);
+    filter: brightness(0.75);
+}
+.research > div > .background {
+    background-image: url("{% static 'common/imgs/neuron_cover2.png' %}");
+    -webkit-filter: brightness(0.8);
+    filter: brightness(0.8);
+}
+.news > div > .background {
+    background-image: url("{% static 'common/imgs/neuron_cover3.png' %}");
+    -webkit-filter: brightness(0.5);
+    filter: brightness(0.5);
+    background-position: 50% 40%;
+}
+.cs1 > div > .background {
+    background-image: url("{% static 'common/imgs/neuron_cover2.png' %}");
+    -webkit-filter: brightness(0);
+    filter: brightness(0);
+}
+.cs2 > div > .background {
+    background-image: url("{% static 'common/imgs/neuron_cover3.png' %}");
+    -webkit-filter: brightness(0);
+    filter: brightness(0);
+}
 </style>
 {% endblock %}
 
@@ -117,14 +159,15 @@ a:hover {
         <div class="col-lg-6 main-col">
             <div class="row align-items-center no-gutters title">
                 <div class="col">
-                    <h1 class="display-1 text-center" id="title-text">Gratton Lab</h1>
+                    <h1 class="display-1 text-center" id="title-text" style="color:white";>Gratton Lab</h1>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 main-col">
             <div class="row align-items-center no-gutters link-block" id="row1">
                 <div class="col-6 link-box people">
-                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:people' %}"></a>
                         <div class="col">
                             <h2 class="text-center" style="color:white;">People</h2>
@@ -132,25 +175,28 @@ a:hover {
                     </div>
                 </div>
                 <div class="col-6 link-box publications">
-                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:publications' %}"></a>
                         <div class="col">
-                            <h2 class="text-center">Publications</h2>
+                            <h2 class="text-center" style="color:white;">Publications</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row align-items-center no-gutters link-block" id="row2">
                 <div class="col-6 link-box research">
-                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:research' %}"></a>
                         <div class="col">
-                            <h2 class="text-center">Research</h2>
+                            <h2 class="text-center" style="color:white;">Research</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 link-box news">
-                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:news' %}"></a>
                         <div class="col">
                             <h2 class="text-center" style="color:white;">News</h2>
@@ -160,7 +206,8 @@ a:hover {
             </div>
             <div class="row align-items-center no-gutters link-block" id="row3">
                 <div class="col-6 link-box cs1">
-                    <div class="row align-items-center no-gutters" style="background-color:black;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="/"></a>
                         <div class="col">
                             <h2 class="text-center" style="color:white;">Coming Soon...</h2>
@@ -168,10 +215,11 @@ a:hover {
                     </div>
                 </div>
                 <div class="col-6 link-box cs2">
-                    <div class="row align-items-center no-gutters" style="background-color:white;">
+                    <div class="row align-items-center no-gutters">
+                        <div class="background"></div>
                         <a class="link-to-page" href="/"></a>
                         <div class="col">
-                            <h2 class="text-center">Coming Soon...</h2>
+                            <h2 class="text-center" style="color:white;">Coming Soon...</h2>
                         </div>
                     </div>
                 </div>
@@ -188,6 +236,8 @@ $('.link-to-page').click(function(event){
     event.preventDefault();
     // Hide link
     $(event.target).hide();
+    // Fade block background to black
+    $(event.target).siblings(".background").css({"filter":"brightness(0)","-webkit-filter":"brightness(0)"});
     // Make current selection persist
     $(event.target).parent().parent().css({"max-width":"100%","flex":"0 0 100%"});
     // Make current selection text stay appeared
@@ -206,7 +256,10 @@ $('.link-to-page').click(function(event){
     //Collapse title column and its text
     $(event.target).parent().parent().parent().parent().siblings().css({"max-width":"0%","flex":"0 0 0%"})
     $("#title-text").fadeOut(500);
-
+    // fade text after 2 seconds
+    setTimeout(function() { $(event.target).siblings(".col").children("h2").fadeOut(750); },1500);
+    // Go to page after 3 seconds
+    setTimeout(function() { window.location.href = event.target.href; },3000);
 });
 </script>
 {% endblock %}
