@@ -3,6 +3,16 @@
 
 {% block head %}
 <style>
+.main-bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    background-image: url("{% static 'common/imgs/silhouette.png' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .main-col {
     -webkit-transition: max-width 1s, flex 1s;
     -webkit-transition-delay: 1s;
@@ -124,19 +134,24 @@
     background-position: 50% 40%;
 }
 .cs1 > div > .background {
-    background-image: url("{% static 'common/imgs/neuron_cover2.png' %}");
-    -webkit-filter: brightness(0);
-    filter: brightness(0);
+    background-image: url("{% static 'common/imgs/corrmat.png' %}");
+    -webkit-filter: brightness(0.5);
+    filter: brightness(0.5);
 }
 .cs2 > div > .background {
-    background-image: url("{% static 'common/imgs/neuron_cover3.png' %}");
-    -webkit-filter: brightness(0);
-    filter: brightness(0);
+    background-image: url("{% static 'common/imgs/powernetwork.jpeg' %}");
+    background-position: 10% 20%;
+    -webkit-filter: brightness(0.5);
+    filter: brightness(0.5);
 }
 .scroll-down {
     font-size: 60;
     color: #222;
     cursor: pointer;
+}
+.pagefade { /* on home page turn off page fade in */
+    -webkit-filter:brightness(1);
+    filter:brightness(1);
 }
 </style>
 {% endblock %}
@@ -148,8 +163,9 @@
     <div class="row no-gutters pagefade">
         <div class="col-lg-6 main-col animated fadeInLeft">
             <div class="row align-items-center no-gutters title">
+                <div class="main-bg"></div>
                 <div class="col">
-                    <h1 class="display-4 text-center black-text" id="title-text">gratton|lab</h1>
+                    <h4 class="text-center black-text" id="title-text">gratton|lab</h4>
                     <div class="d-flex justify-content-center">
                         <span class="octicon octicon-triangle-down scroll-down d-lg-none d-xl-none"></span>
                     </div>
@@ -203,7 +219,7 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="/"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">coming soon...</h2>
+                            <h2 class="text-center white-text">testsection</h2>
                         </div>
                     </div>
                 </div>
@@ -212,7 +228,7 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="/"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">coming soon...</h2>
+                            <h2 class="text-center white-text">testsection</h2>
                         </div>
                     </div>
                 </div>
@@ -223,8 +239,9 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'common/js/pagefade.js' %}"></script>
 <script>
+// fade-out page
+$(".nav-link").click(function(event){event.preventDefault();$(".pagefade").css({"filter":"brightness(0)","-webkit-filter":"brightness(0)"});setTimeout(function(){window.location.href=event.target.href;},1100);});
 $('.link-to-page').click(function(event){
     // Prevent default redirect
     event.preventDefault();
