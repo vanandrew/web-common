@@ -32,8 +32,7 @@ else: # Do these things when DEBUG is disabled
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = ['thawing-wave-13120.herokuapp.com','localhost']
-
+ALLOWED_HOSTS = ['grattonlabbackend.herokuapp.com','localhost']
 
 # Application definition
 
