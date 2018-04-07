@@ -25,8 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vm+c$xxc#7om7#uzds9ynr3i@myq9zezb06%9mjfk-o67r#+!l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-if DEBUG: # Do these things if in DEBUG mode
+if os.environ['DEBUG'] == "True": # Do these things if in DEBUG mode
     pass
 else: # Do these things when DEBUG is disabled
     SECURE_CONTENT_TYPE_NOSNIFF = True
