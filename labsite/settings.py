@@ -32,7 +32,7 @@ else: # Do these things when DEBUG is disabled
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = ['grattonlabbackend.herokuapp.com','grattonlab.org','localhost']
+ALLOWED_HOSTS = ['grattonlabbackend.herokuapp.com','www.grattonlab.org','localhost']
 
 # Application definition
 
