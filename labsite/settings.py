@@ -26,7 +26,7 @@ SECRET_KEY = 'vm+c$xxc#7om7#uzds9ynr3i@myq9zezb06%9mjfk-o67r#+!l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 try:
-    DEBUG = (os.environ['DEBUG'] == "True") # Get DEBUG variable
+    DEBUG = (os.environ['DEBUG'] == "TRUE") # Get DEBUG variable
 except:
     DEBUG = False
 if DEBUG: # Do these things if in DEBUG mode
