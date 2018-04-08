@@ -3,6 +3,12 @@
 
 {% block head %}
 <style>
+.title-text {
+    font-size: 1.5rem;
+}
+.block-text {
+    font-size: 1.5rem;
+}
 .main-bg {
     height: 100%;
     width: 100%;
@@ -37,8 +43,6 @@
     flex: 0 0 10%;
 }
 .link-block > .col-6 > .row > .col > h2 { /* Set Animation for hiding text*/
-    /*visibility: hidden;
-    opacity: 0;*/
     -webkit-transition: visibility 0.5s, opacity 0.5s;
     transition: visibility 0.5s, opacity 0.5s;
 }
@@ -87,19 +91,19 @@
     opacity: 1;
 }
 /* Not yet used; rename in future */
-.link-box.cs1:hover {
+.link-box.directions:hover {
     max-width: 90%;
     flex: 0 0 90%;
 }
-.link-box.cs1:hover > .row > .col > h2 {
+.link-box.directions:hover > .row > .col > h2 {
     visibility: visible;
     opacity: 1;
 }
-.link-box.cs2:hover {
+.link-box.contact:hover {
     max-width: 90%;
     flex: 0 0 90%;
 }
-.link-box.cs2:hover > .row > .col > h2 {
+.link-box.contact:hover > .row > .col > h2 {
     visibility: visible;
     opacity: 1;
 }
@@ -133,12 +137,12 @@
     filter: brightness(0.5);
     background-position: 50% 40%;
 }
-.cs1 > div > .background {
+.directions > div > .background {
     background-image: url("{% static 'common/imgs/corrmat.png' %}");
     -webkit-filter: brightness(0.5);
     filter: brightness(0.5);
 }
-.cs2 > div > .background {
+.contact > div > .background {
     background-image: url("{% static 'common/imgs/powernetwork.jpeg' %}");
     background-position: 10% 20%;
     -webkit-filter: brightness(0.5);
@@ -165,7 +169,7 @@
             <div class="row align-items-center no-gutters title">
                 <div class="main-bg"></div>
                 <div class="col">
-                    <h4 class="text-center black-text" id="title-text">gratton|lab</h4>
+                    <h4 class="text-center black-text display-4 title-text">gratton|lab</h4>
                     <div class="d-flex justify-content-center">
                         <span class="octicon octicon-triangle-down scroll-down d-lg-none d-xl-none"></span>
                     </div>
@@ -179,7 +183,7 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:people' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">people</h2>
+                            <h2 class="text-center white-text display-4 block-text">people</h2>
                         </div>
                     </div>
                 </div>
@@ -188,7 +192,7 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:publications' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">publications</h2>
+                            <h2 class="text-center white-text display-4 block-text">publications</h2>
                         </div>
                     </div>
                 </div>
@@ -199,7 +203,7 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:research' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">research</h2>
+                            <h2 class="text-center white-text display-4 block-text">research</h2>
                         </div>
                     </div>
                 </div>
@@ -208,27 +212,27 @@
                         <div class="background"></div>
                         <a class="link-to-page" href="{% url 'common:news' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">news</h2>
+                            <h2 class="text-center white-text display-4 block-text">news</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row align-items-center no-gutters link-block" id="row3">
-                <div class="col-6 link-box cs1">
+                <div class="col-6 link-box directions">
                     <div class="row align-items-center no-gutters">
                         <div class="background"></div>
-                        <a class="link-to-page" href="/"></a>
+                        <a class="link-to-page" href="{% url 'common:directions' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">testsection</h2>
+                            <h2 class="text-center white-text display-4 block-text">directions</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 link-box cs2">
+                <div class="col-6 link-box contact">
                     <div class="row align-items-center no-gutters">
                         <div class="background"></div>
-                        <a class="link-to-page" href="/"></a>
+                        <a class="link-to-page" href="{% url 'common:contact' %}"></a>
                         <div class="col">
-                            <h2 class="text-center white-text">testsection</h2>
+                            <h2 class="text-center white-text display-4 block-text">contact</h2>
                         </div>
                     </div>
                 </div>
@@ -266,11 +270,11 @@ $('.link-to-page').click(function(event){
     $(event.target).parent().parent().parent().parent().css({"max-width":"100%","flex":"0 0 100%"})
     //Collapse title column and its text
     $(event.target).parent().parent().parent().parent().siblings().css({"max-width":"0%","flex":"0 0 0%"})
-    $("#title-text").fadeOut(500);
+    $(".title-text").fadeOut(500);
     // fade text after 2 seconds
     setTimeout(function() { $(event.target).siblings(".col").children("h2").fadeOut(750); },1500);
     // Go to page after 3 seconds
-    setTimeout(function() { window.location.href = event.target.href; },3000);
+    setTimeout(function() { window.location.href = event.target.href; },2500);
 });
 $(".scroll-down").click(function(){
     // Scroll-down by viewport height
