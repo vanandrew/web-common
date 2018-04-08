@@ -24,6 +24,6 @@ urlpatterns = [
     path('', include('common.urls'))
 ]
 
-if settings.DEBUG:
+if settings.STATIC_MEDIA:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

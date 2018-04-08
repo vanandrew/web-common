@@ -144,10 +144,12 @@ try:
     DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
     # Set Dropbox Path
     DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
+    STATIC_MEDIA = False
 except KeyError:
     print('Dropbox token not defined!')
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+    STATIC_MEDIA = True
 
 # Set ckeditor settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
