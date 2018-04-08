@@ -4,15 +4,19 @@
 {% block publications %}active{% endblock %}
 
 {% block content %}
-    <div class="container-fluid nopad pagefade">
-        <div class="row align-items-center no-gutters title">
-            <div class="col-2">
-                <h1 class="display-4 black-text animated fadeInLeft section-title">publications</div>
-            </div>
+<div class="container-fluid nopad pagefade">
+    <div class="row align-items-center no-gutters title">
+        <div class="col-10 offset-1 col-md-4 offset-md-0">
+            <h1 class="display-4 black-text animated fadeInLeft section-title">publications</h1>
+        </div>
+        <div class="col-10 offset-1 col-md-6 offset-md-1 animated fadeInRight content">
+            {% for pub in publications %}
+            <p>{{ pub.container }}</p>
+            {% endfor %}
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'common/js/pagefade.js' %}"></script>
 {% endblock %}

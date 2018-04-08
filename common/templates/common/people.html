@@ -1,23 +1,63 @@
 {% extends 'common/base.html' %}
 {% load staticfiles %}
 
-
+{% block head %}
+<style>
+.card-img-top {
+    cursor: pointer;
+}
+</style>
+{% endblock %}
 
 {% block people %}active{% endblock %}
 
 {% block content %}
-    <div class="container-fluid nopad pagefade">
-        <div class="row align-items-center no-gutters title">
-            <div class="col">
-                <h1 class="display-4 black-text animated fadeInLeft section-title">people</div>
+<div class="container-fluid nopad pagefade">
+    <div class="row align-items-center no-gutters title">
+        <div class="col-10 offset-1 col-md-3 offset-md-0 col-lg-2 offset-lg-0">
+            <h1 class="display-4 black-text animated fadeInLeft section-title">people</h1>
+        </div>
+        {% for person in members %}
+        <div class="col-10 offset-1 col-md-3 offset-md-1 col-lg-3 offset-lg-1 research-col animated fadeInRight content">
+            <div class="card" style="width: 14rem;">
+                <img class="card-img-top" src="{{ person.photo.url }}" data-toggle="modal" data-target="#{{ person.first_name }}{{ person.last_name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ person.first_name }} {{ person.last_name }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% for person in members %}
+<div class="modal fade" id="{{ person.first_name }}{{ person.last_name }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ person.first_name }} {{ person.last_name }}</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="{{ person.photo.url }}" class="img-fluid img-thumbnail">
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        {% autoescape off %}
+                        {{ person.blurb }}
+                        {% endautoescape %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    {% for person in members %}
-        <img src="{{ person.photo.url }}">
-    {% endfor %}
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'common/js/pagefade.js' %}"></script>
 {% endblock %}

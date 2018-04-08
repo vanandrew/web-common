@@ -4,15 +4,19 @@
 {% block directions %}active{% endblock %}
 
 {% block content %}
-    <div class="container-fluid nopad pagefade">
-        <div class="row align-items-center no-gutters title">
-            <div class="col">
-                <h1 class="display-4 black-text animated fadeInLeft section-title">directions</div>
+<div class="container-fluid nopad pagefade">
+    <div class="row align-items-center no-gutters title">
+        <div class="col-10 offset-1 col-md-4 offset-md-0 col-lg-2 offset-lg-0">
+            <h1 class="display-4 black-text animated fadeInLeft section-title">directions</h1>
+        </div>
+        <div class="col-10 offset-1 col-md-6 offset-md-1 col-lg-8 offset-lg-1 animated fadeInRight content">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1429.966309695055!2d-87.6747168105072!3d42.05473649663277!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fda9e29d64905%3A0x1795c48c6b940fd3!2sCresap+Laboratory!5e1!3m2!1sen!2sus!4v1523223513320" allowfullscreen></iframe>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'common/js/pagefade.js' %}"></script>
 {% endblock %}
