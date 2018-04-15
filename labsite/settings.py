@@ -162,7 +162,7 @@ CKEDITOR_CONFIGS = {
 # Django suit config
 SUIT_CONFIG = {
     #header
-    'ADMIN_NAME': 'Caterina Lab Website',
+    'ADMIN_NAME': 'Gratton Lab Website',
     'HEADER_DATE_FORMAT': 'l, j. F Y',
     'HEADER_TIME_FORMAT': 'h:i A',
     #forms

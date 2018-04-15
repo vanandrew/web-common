@@ -143,6 +143,12 @@ class news_item(models.Model):
         verbose_name = "Title"
     )
 
+    # post Date
+    date = models.DateField(
+        null = True,
+        verbose_name = "Date Published"
+    )
+
     # content
     content = RichTextUploadingField()
 

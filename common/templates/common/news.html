@@ -4,17 +4,23 @@
 {% block news %}active{% endblock %}
 
 {% block content %}
-    <div class="container-fluid nopad pagefade">
-        <div class="row align-items-center no-gutters title">
-            <div class="col">
-                <h1 class="display-4 black-text animated fadeInLeft section-title">news</h1>
-            </div>
+<div class="container-fluid nopad pagefade">
+    <div class="row no-gutters title">
+        <div class="col-9 offset-2 col-md-3 offset-md-0 align-self-center">
+            <h1 class="display-4 black-text animated fadeInLeft section-title">news</h1>
         </div>
-    </div>
-    {% for item in news %}
-        <h2>{{ item.title }}</h2>
-        {{ item.content|safe }}
-    {% endfor %}
+        <div class="col-9 offset-2 col-md-8 offset-md-0 animated fadeInRight">
+            <br><br><br>
+            {% for item in news %}
+            <p>{{ item.date }}</p>
+            <h2>{{ item.title }}</h2>
+            {{ item.content|safe }}
+            <p>
+            <hr>
+            {% endfor %}
+        </div>
+    <div>
+</div>
 {% endblock %}
 
 {% block scripts %}

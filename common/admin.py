@@ -53,7 +53,7 @@ class newsitemadmin(admin.ModelAdmin):
     ordering = ('title',)
     fieldsets = (
         ('News Post', {
-            'fields': ('title','content',)
+            'fields': ('title','date','content',)
         }),
     )
     search_fields = ('title',)

@@ -5,13 +5,33 @@
 
 {% block content %}
 <div class="container-fluid nopad pagefade">
-    <div class="row align-items-center no-gutters title">
-        <div class="col-10 offset-1 col-md-4 offset-md-0">
+    <div class="row no-gutters title">
+        <div class="col-9 offset-2 col-md-5 offset-md-0 col-lg-4 align-self-center">
             <h1 class="display-4 black-text animated fadeInLeft section-title">publications</h1>
         </div>
-        <div class="col-10 offset-1 col-md-6 offset-md-1 animated fadeInRight content">
-            {% for pub in publications %}
-            <p>{{ pub.container }}</p>
+        <div class="col-9 offset-2 col-md-6 offset-md-0 col-lg-7 animated fadeInRight content">
+            <br><br><br>
+            {% for current_year in years %}
+        	<div class="row no-gutters">
+        		<div class="col-12">
+            			<h4>{{ current_year }}</h4>
+            		</div>
+            	</div>
+            	{% for pub in publications %}
+            	{% if pub.date.year == current_year %}
+            	<div class="row no-gutters">
+            		<div class="col-12">
+            			<p>{% autoescape off %}{{ pub.container }}{% endautoescape %}
+            				{% if pub.paper %}
+            				[<a target="_blank" href="{{ pub.paper.url }}">PDF</a>]
+            				{% endif %}
+            				{% for pub_link in pub.publication_link_set.all %}
+            				[<a target="_blank" href="{{ pub_link.link }}">Article</a>]
+            				{% endfor %}</p>
+            		</div>
+            	</div>
+            	{% endif %}
+            	{% endfor %}
             {% endfor %}
         </div>
     </div>

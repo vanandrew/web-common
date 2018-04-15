@@ -4,17 +4,72 @@
 {% block datasoftware %}active{% endblock %}
 
 {% block content %}
-    <div class="container-fluid nopad pagefade">
-        <div class="row align-items-center no-gutters title">
-            <div class="col">
-                <h1 class="display-4 black-text animated fadeInLeft section-title">data/software</h1>
+<div class="container-fluid nopad pagefade">
+    <div class="row no-gutters title">
+        <div class="col-9 offset-2 col-md-5 offset-md-0 col-lg-4 align-self-center">
+            <h1 class="display-4 black-text animated fadeInLeft section-title">data/software</h1>
+        </div>
+        <div class="col-9 offset-2 col-md-6 offset-md-0 col-lg-7 research-col animated fadeInRight content">
+            <h1 class="display-4">Data</h1>
+            {% if data|length == 0 %}
+            <p>No data available yet...</p>
+            {% endif %}
+            {% for item in data %}
+            <div class="row no-gutters">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-3">
+                                    {% if item.photo %}
+                                    <a href="{{ item.link.url }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    {% endif %}
+                                </div>
+                                <div class="col-9">
+                                    <h5>{{ item.title }}</h5>
+                                    {% autoescape off %}
+                                    {{ item.description }}
+                                    {% endautoescape %}
+                                    <p><a href="{{ item.link.url }}">Download</a><p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
+            <hr>
+            <h1 class="display-4">Software</h1>
+            {% if software|length == 0 %}
+            <p>No software available yet...</p>
+            {% endif %}
+            {% for item in software %}
+            <div class="row no-gutters">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-3">
+                                    {% if item.photo %}
+                                    <a href="{{ item.link.url }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    {% endif %}
+                                </div>
+                                <div class="col-9">
+                                    <h5>{{ item.title }}</h5>
+                                    {% autoescape off %}
+                                    {{ item.description }}
+                                    {% endautoescape %}
+                                    <p><a href="{{ item.link.url }}">Download</a><p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% for item in news %}
-        <h2>{{ item.title }}</h2>
-        {{ item.content|safe }}
-    {% endfor %}
+</div>
 {% endblock %}
 
 {% block scripts %}

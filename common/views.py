@@ -29,7 +29,7 @@ def publications_page(request):
 
 # news
 def news_page(request):
-    news = news_item.objects.all()
+    news = news_item.objects.all().order_by('-date')[0:5]
     return render(request, 'common/news.html',{'news': news})
 
 # data/software
