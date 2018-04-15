@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django import forms
 from ckeditor_uploader.fields import RichTextUploadingField
-from .models import (lab_member, publication, publication_link,
-    news_item, job_listing, current_study,
-    data_listing, software_listing)
+from .models import *
 
 # admin for lab member model
 class labmemberadmin(admin.ModelAdmin):
@@ -57,21 +55,6 @@ class newsitemadmin(admin.ModelAdmin):
         }),
     )
     search_fields = ('title',)
-    save_as = True
-
-# job listing
-class joblistingadmin(admin.ModelAdmin):
-    ordering = ('-post_date',)
-    fieldsets = (
-        ('Job Listing', {
-            'fields': (
-                'title',
-                'jobid',
-                'description',
-            )
-        }),
-    )
-    search_fields = ('title','jobid',)
     save_as = True
 
 # current study listing

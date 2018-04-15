@@ -156,37 +156,37 @@ class news_item(models.Model):
     def __str__(self):
         return self.title
 
-# Create class for job listing
-class job_listing(models.Model):
-    class Meta:
-        verbose_name = "Job Listing"
-
-    # Create Title for Job listing
-    title = models.CharField(
-        max_length = 350,
-        verbose_name = "Title"
-    )
-
-    # Create Job post date
-    post_date = models.DateField(
-        auto_now_add = True,
-        verbose_name = "Posting Date"
-    )
-
-    # Create Job ID
-    jobid = models.IntegerField(
-        verbose_name = "Job ID#"
-    )
-
-    # Create Job Description
-    description = models.TextField(
-        blank = True,
-        null = True,
-        verbose_name = "Description"
-    )
-
-    def __str__(self):
-        return self.title + " - " + str(self.jobid)
+## Create class for job listing
+#class job_listing(models.Model):
+#    class Meta:
+#        verbose_name = "Job Listing"
+#
+#    # Create Title for Job listing
+#    title = models.CharField(
+#        max_length = 350,
+#        verbose_name = "Title"
+#    )
+#
+#    # Create Job post date
+#    post_date = models.DateField(
+#        auto_now_add = True,
+#        verbose_name = "Posting Date"
+#    )
+#
+#    # Create Job ID
+#    jobid = models.IntegerField(
+#        verbose_name = "Job ID#"
+#    )
+#
+#    # Create Job Description
+#    description = models.TextField(
+#        blank = True,
+#        null = True,
+#        verbose_name = "Description"
+#    )
+#
+#    def __str__(self):
+#        return self.title + " - " + str(self.jobid)
 
 # Create class for current study listing
 class current_study(models.Model):
