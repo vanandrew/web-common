@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from ckeditor_uploader.fields import RichTextUploadingField
 from .models import (lab_member, publication, publication_link,
     news_item, job_listing, current_study,
     data_listing, software_listing)
@@ -19,6 +19,7 @@ class labmemberadmin(admin.ModelAdmin):
                 'blurb',
                 'alumni',
                 'photo',
+                'cv'
             )
         }),
     )
@@ -47,16 +48,16 @@ class publicationadmin(admin.ModelAdmin):
     search_fields = ('title','container','date',)
     save_as = True
 
-# news item form
-class newsitemform(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorUploadingWidget())
-    class Meta:
-        model = news_item
-        fields = '__all__'
-
 # news item
 class newsitemadmin(admin.ModelAdmin):
-    form = newsitemform
+    ordering = ('title',)
+    fieldsets = (
+        ('News Post', {
+            'fields': ('title','content',)
+        }),
+    )
+    search_fields = ('title',)
+    save_as = True
 
 # job listing
 class joblistingadmin(admin.ModelAdmin):

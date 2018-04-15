@@ -17,7 +17,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -40,14 +39,14 @@ ALLOWED_HOSTS = ['grattonlabbackend.herokuapp.com','www.grattonlab.org','localho
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
+    'common.apps.CommonConfig',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig',
     'ckeditor',
     'ckeditor_uploader'
 ]
@@ -124,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -143,7 +142,7 @@ try:
     # Set default file storage
     DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
     # Set Dropbox Path
-    DROPBOX_ROOT_PATH = '/Apps/andrew-webtest/caterina-website'
+    DROPBOX_ROOT_PATH = 'caterina-website'
     STATIC_MEDIA = False
 except KeyError:
     print('Dropbox token not defined!')
@@ -154,6 +153,37 @@ except KeyError:
 # Set ckeditor settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%'
+    }
+}
+
+# Django suit config
+SUIT_CONFIG = {
+    #header
+    'ADMIN_NAME': 'Caterina Lab Website',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'h:i A',
+    #forms
+    'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    'CONFIRM_UNSAVED_CHANGES': True, # Default True
+    #menu
+    'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+       'sites': 'icon-leaf',
+       'auth': 'icon-lock',
+    },
+    'MENU_OPEN_FIRST_CHILD': True, # Default True
+    'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+        'sites',
+        {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+        {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+    ),
+    #misc
+    'LIST_PER_PAGE': 15
+}
 
 # Set static directory
 STATIC_URL = '/static/'

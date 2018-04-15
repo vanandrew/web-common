@@ -61,6 +61,14 @@ class lab_member(models.Model):
         verbose_name = "Photo"
     )
 
+    # Cv of lab member
+    cv = models.FileField(
+        upload_to='cv/',
+        null = True,
+        blank = True,
+        verbose_name = "CV"
+    )
+
     # Return the name of the model
     def __str__(self):
         return self.last_name + ', ' + self.first_name

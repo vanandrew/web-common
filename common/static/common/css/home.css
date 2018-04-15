@@ -52,6 +52,9 @@
     z-index: 10;
     position: absolute;
 }
+.link-box {
+    height: 100%;
+}
 /* Show each block and its text */
 .link-box.people:hover {
     max-width: 90%;
@@ -117,12 +120,12 @@
     filter: brightness(0.3);
 }
 .publications > div > .background {
-    background-image: url("../imgs/neuron_cover.png");
+    background-image: url("../imgs/neuron_cover2.png");
     -webkit-filter: brightness(0.75);
     filter: brightness(0.75);
 }
 .research > div > .background {
-    background-image: url("../imgs/neuron_cover2.png");
+    background-image: url("../imgs/neuron_cover.png");
     -webkit-filter: brightness(0.8);
     filter: brightness(0.8);
 }

@@ -18,7 +18,6 @@ from django.urls import path,include
 from django.conf import settings
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('@dmin/', admin.site.urls),
     path('', include('common.urls'))
