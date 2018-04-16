@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import (lab_member, publication, news_item, job_listing,
-    current_study, data_listing, software_listing)
+from .models import *
 from datetime import datetime
 import json
 import os
