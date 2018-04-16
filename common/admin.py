@@ -109,7 +109,6 @@ class softwarelistingadmin(admin.ModelAdmin):
 admin.site.register(lab_member, labmemberadmin)
 admin.site.register(publication, publicationadmin)
 admin.site.register(news_item, newsitemadmin)
-admin.site.register(job_listing, joblistingadmin)
 admin.site.register(current_study, currentstudyadmin)
 admin.site.register(data_listing, datalistingadmin)
 admin.site.register(software_listing, softwarelistingadmin)
