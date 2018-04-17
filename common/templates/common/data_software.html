@@ -21,16 +21,16 @@
                         <div class="card-body">
                             <div class="row no-gutters">
                                 <div class="col-3">
-                                    {% if item.photo %}
-                                    <a href="{{ item.link.url }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    {% if item.image %}
+                                    <a href="{{ item.link }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
                                     {% endif %}
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 offset-1">
                                     <h5>{{ item.title }}</h5>
                                     {% autoescape off %}
                                     {{ item.description }}
                                     {% endautoescape %}
-                                    <p><a href="{{ item.link.url }}">Download</a><p>
+                                    <p><a href="{{ item.link }}">Download</a><p>
                                 </div>
                             </div>
                         </div>
@@ -50,16 +50,16 @@
                         <div class="card-body">
                             <div class="row no-gutters">
                                 <div class="col-3">
-                                    {% if item.photo %}
-                                    <a href="{{ item.link.url }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    {% if item.image %}
+                                    <a href="{{ item.link }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
                                     {% endif %}
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 offset-1">
                                     <h5>{{ item.title }}</h5>
                                     {% autoescape off %}
                                     {{ item.description }}
                                     {% endautoescape %}
-                                    <p><a href="{{ item.link.url }}">Download</a><p>
+                                    <p><a href="{{ item.link }}">Download</a><p>
                                 </div>
                             </div>
                         </div>
