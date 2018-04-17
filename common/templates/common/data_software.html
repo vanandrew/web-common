@@ -1,6 +1,14 @@
 {% extends 'common/base.html' %}
 {% load staticfiles %}
 
+{% block head %}
+<style>
+.info-block {
+    padding: 10px 0px;
+}
+</style>
+{% endblock %}
+
 {% block datasoftware %}active{% endblock %}
 
 {% block content %}
@@ -15,14 +23,14 @@
             <p>No data available yet...</p>
             {% endif %}
             {% for item in data %}
-            <div class="row no-gutters">
+            <div class="row no-gutters info-block">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="row no-gutters">
                                 <div class="col-3">
                                     {% if item.image %}
-                                    <a href="{{ item.link }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    <a href="{{ item.link }}" target="_blank"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
                                     {% endif %}
                                 </div>
                                 <div class="col-8 offset-1">
@@ -30,7 +38,7 @@
                                     {% autoescape off %}
                                     {{ item.description }}
                                     {% endautoescape %}
-                                    <p><a href="{{ item.link }}">Download</a><p>
+                                    <p><a href="{{ item.link }}" target="_blank">Download</a><p>
                                 </div>
                             </div>
                         </div>
@@ -44,14 +52,14 @@
             <p>No software available yet...</p>
             {% endif %}
             {% for item in software %}
-            <div class="row no-gutters">
+            <div class="row no-gutters info-block">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="row no-gutters">
                                 <div class="col-3">
                                     {% if item.image %}
-                                    <a href="{{ item.link }}"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
+                                    <a href="{{ item.link }}" target="_blank"><img class="img-fluid img-thumbnail" src="{{ item.image.url }}"></a>
                                     {% endif %}
                                 </div>
                                 <div class="col-8 offset-1">
@@ -59,7 +67,7 @@
                                     {% autoescape off %}
                                     {{ item.description }}
                                     {% endautoescape %}
-                                    <p><a href="{{ item.link }}">Download</a><p>
+                                    <p><a href="{{ item.link }}" target="_blank">Download</a><p>
                                 </div>
                             </div>
                         </div>
