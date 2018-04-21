@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import (lab_member, publication,
-    publication_link, job_listing, current_study,
-    data_listing, software_listing)
+from django import forms
+from ckeditor_uploader.fields import RichTextUploadingField
+from .models import *
 
 # admin for lab member model
 class labmemberadmin(admin.ModelAdmin):
@@ -17,6 +17,7 @@ class labmemberadmin(admin.ModelAdmin):
                 'blurb',
                 'alumni',
                 'photo',
+                'cv'
             )
         }),
     )
@@ -45,19 +46,15 @@ class publicationadmin(admin.ModelAdmin):
     search_fields = ('title','container','date',)
     save_as = True
 
-# job listing
-class joblistingadmin(admin.ModelAdmin):
-    ordering = ('-post_date',)
+# news item
+class newsitemadmin(admin.ModelAdmin):
+    ordering = ('title',)
     fieldsets = (
-        ('Job Listing', {
-            'fields': (
-                'title',
-                'jobid',
-                'description',
-            )
+        ('News Post', {
+            'fields': ('title','pub_date','content',)
         }),
     )
-    search_fields = ('title','jobid',)
+    search_fields = ('title',)
     save_as = True
 
 # current study listing
@@ -111,7 +108,7 @@ class softwarelistingadmin(admin.ModelAdmin):
 # dlabsite models
 admin.site.register(lab_member, labmemberadmin)
 admin.site.register(publication, publicationadmin)
-admin.site.register(job_listing, joblistingadmin)
+admin.site.register(news_item, newsitemadmin)
 admin.site.register(current_study, currentstudyadmin)
 admin.site.register(data_listing, datalistingadmin)
 admin.site.register(software_listing, softwarelistingadmin)

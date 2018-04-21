@@ -1,5 +1,6 @@
 import os, datetime
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create class for lab member
 class lab_member(models.Model):
@@ -60,6 +61,14 @@ class lab_member(models.Model):
         verbose_name = "Photo"
     )
 
+    # Cv of lab member
+    cv = models.FileField(
+        upload_to='cv/',
+        null = True,
+        blank = True,
+        verbose_name = "CV"
+    )
+
     # Return the name of the model
     def __str__(self):
         return self.last_name + ', ' + self.first_name
@@ -111,6 +120,15 @@ class publication_link(models.Model):
         verbose_name = "Publication Link"
     )
 
+    # Publication Link Name
+    name = models.CharField(
+        max_length = 350,
+        unique = True,
+        null = True,
+        blank = True,
+        verbose_name = "Name"
+    )
+
     # Publication Title
     link = models.CharField(
         max_length = 350,
@@ -122,37 +140,30 @@ class publication_link(models.Model):
     def __str__(self):
         return self.link
 
-# Create class for job listing
-class job_listing(models.Model):
+# Create class for news item
+class news_item(models.Model):
     class Meta:
-        verbose_name = "Job Listing"
+        verbose_name = "News Item"
 
-    # Create Title for Job listing
+    # news title
     title = models.CharField(
         max_length = 350,
+        unique = True,
         verbose_name = "Title"
     )
 
-    # Create Job post date
-    post_date = models.DateField(
-        auto_now_add = True,
-        verbose_name = "Posting Date"
-    )
-
-    # Create Job ID
-    jobid = models.IntegerField(
-        verbose_name = "Job ID#"
-    )
-
-    # Create Job Description
-    description = models.TextField(
-        blank = True,
+    # post Date
+    pub_date = models.DateField(
         null = True,
-        verbose_name = "Description"
+        verbose_name = "Date Published"
     )
 
+    # content
+    content = RichTextUploadingField()
+
+    # title
     def __str__(self):
-        return self.title + " - " + str(self.jobid)
+        return self.title
 
 # Create class for current study listing
 class current_study(models.Model):
