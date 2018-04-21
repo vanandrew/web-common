@@ -28,3 +28,43 @@ body {
     font-size: 4rem;
     cursor: pointer;
 }
+.form-layout {
+    margin: 60px 0px 16px 0px;
+}
+.responsive-text {
+    font-size: 0.6rem;
+}
+.header-responsive-text {
+    font-size: 1rem;
+}
+@media (min-width: 576px) {
+    .responsive-text {
+        font-size:0.8rem;
+    }
+    .header-responsive-text {
+        font-size: 1.3rem;
+    }
+}
+@media (min-width: 768px) {
+    .responsive-text {
+        font-size:1rem;
+    }
+    .header-responsive-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .responsive-text {
+        font-size:1.25rem;
+    }
+    .header-responsive-text {
+        font-size: 2rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}

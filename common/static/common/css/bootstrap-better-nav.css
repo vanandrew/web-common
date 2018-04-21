@@ -65,3 +65,7 @@ body.side-menu-visible #side-menu {
   z-index:100;
   display:none;
 }
+
+.navbar-toggler {
+    border-radius: 0px;
+}

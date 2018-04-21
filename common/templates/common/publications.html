@@ -10,33 +10,44 @@
             <h1 class="display-4 black-text animated fadeInLeft section-title">publications</h1>
         </div>
         <div class="col-9 offset-2 col-md-6 offset-md-0 col-lg-7 animated fadeInRight content">
-            <br><br><br>
-            {% for current_year in years %}
         	<div class="row no-gutters">
         		<div class="col-12">
-            			<h4>{{ current_year }}</h4>
-            		</div>
-            	</div>
-            	{% for pub in publications %}
-            	{% if pub.date.year == current_year %}
-            	<div class="row no-gutters">
-            		<div class="col-12">
-            			<p>{% autoescape off %}{{ pub.container }}{% endautoescape %}
-            				{% if pub.paper %}
-            				[<a target="_blank" href="{{ pub.paper.url }}">PDF</a>]
-            				{% endif %}
-            				{% for pub_link in pub.publication_link_set.all %}
-            				[<a target="_blank" href="{{ pub_link.link }}">Article</a>]
-            				{% endfor %}</p>
-            		</div>
-            	</div>
-            	{% endif %}
-            	{% endfor %}
-            {% endfor %}
+                    <input class="form-layout form-control" id="search" name="search" placeholder="Search Publications" type="text" data-list=".list">
+                    <div class="list">
+                        {% for current_year in years %}
+                        <h4>{{ current_year }}</h4>
+                    	{% for pub in publications %}
+                    	{% if pub.date.year == current_year %}
+                        <p>{% autoescape off %}{{ pub.container }}{% endautoescape %}
+                            {% if pub.paper %}
+                            [<a target="_blank" href="{{ pub.paper.url }}">PDF</a>]
+                            {% endif %}
+                            {% for pub_link in pub.publication_link_set.all %}
+                            {% if pub_link.name %}
+                            [<a target="_blank" href="{{ pub_link.link }}">{{ pub_link.name }}</a>]
+                            {% else %}
+                            [<a target="_blank" href="{{ pub_link.link }}">Article</a>]
+                            {% endif %}
+                            {% endfor %}</p>
+                    	{% endif %}
+                    	{% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.rawgit.com/vdw/HideSeek/master/jquery.hideseek.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#search').hideseek({
+        ignore: 'h4',
+        highlight: true
+    });
+});
+</script>
 {% endblock %}

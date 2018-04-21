@@ -75,9 +75,6 @@
                         {% if person.phone %}
                         <h6>{{ person.phone }}</h6>
                         {% endif %}
-                        {% if person.cv %}
-                        <p><a href="{{ person.cv.url }}" target="_blank">Curriculum Vitae</a></p>
-                        {% endif %}
                         <div class="text-center">
                             {% if person.photo %}
                             <img src="{{ person.photo.url }}" class="img-fluid img-thumbnail">
@@ -90,6 +87,9 @@
                         {% autoescape off %}
                         {{ person.blurb }}
                         {% endautoescape %}
+                        {% if person.cv %}
+                        <p><a href="{{ person.cv.url }}" target="_blank">Curriculum Vitae</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

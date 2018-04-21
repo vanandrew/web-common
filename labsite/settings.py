@@ -162,24 +162,26 @@ CKEDITOR_CONFIGS = {
 # Django suit config
 SUIT_CONFIG = {
     #header
-    'ADMIN_NAME': 'Gratton Lab Website',
+    'ADMIN_NAME': 'Gratton Lab',
     'HEADER_DATE_FORMAT': 'l, j. F Y',
     'HEADER_TIME_FORMAT': 'h:i A',
     #forms
     'SHOW_REQUIRED_ASTERISK': True,  # Default True
     'CONFIRM_UNSAVED_CHANGES': True, # Default True
     #menu
-    'SEARCH_URL': '/admin/auth/user/',
+    'SEARCH_URL': '',
     'MENU_ICONS': {
        'sites': 'icon-leaf',
+       'common': 'icon-th',
        'auth': 'icon-lock',
     },
     'MENU_OPEN_FIRST_CHILD': True, # Default True
     'MENU_EXCLUDE': ('auth.group',),
     'MENU': (
         'sites',
-        {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
-        {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+        'common',
+        'auth',
+        {'label': 'Go to site','url': '/'}
     ),
     #misc
     'LIST_PER_PAGE': 15

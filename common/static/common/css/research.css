@@ -1,0 +1,68 @@
+.block-text {
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px 10px !important;
+}
+.block-bg-image {
+    z-index: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.block-title {
+    background-image: url('../imgs/neuron_cover.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.block-bg {
+    background-color: rgba(0,0,0,0.8)
+}
+.blockspring1 {
+    background-image: url('../imgs/spring1.png');
+}
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.blockspring2 {
+    background-image: url('../imgs/spring2.png');
+    opacity: 0;
+    -webkit-animation: flickerAnimation 6s infinite;
+    -moz-animation: flickerAnimation 6s infinite;
+    -o-animation: flickerAnimation 6s infinite;
+    animation: flickerAnimation 6s infinite;
+}
+.blockcoffee {
+    background-image: url('../imgs/controlcoffee.png');
+    background-size: contain;
+}
+.blockduckrabbit {
+    background-image: url('../imgs/DuckRabbit.png');
+    background-size: contain;
+}
+.blockmri {
+    background-image: url('../imgs/mri.jpg');
+    background-position: 50% 40%
+}
+.bg-image {
+    height: 100%;
+}

@@ -2,77 +2,7 @@
 {% load staticfiles %}
 
 {% block head %}
-<style>
-.block-text {
-    background-color: rgba(0,0,0,0.8);
-    border-radius: 0.25rem;
-    padding: 10px 10px !important;
-}
-.block-bg-image {
-    z-index: 0;
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.block-title {
-    background-image: url('{% static "common/imgs/neuron_cover.png"%}');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.block-bg {
-    background-color: rgba(0,0,0,0.8)
-}
-.blockspring1 {
-    background-image: url('{% static "common/imgs/spring1.png"%}');
-}
-@keyframes flickerAnimation {
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-o-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-moz-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-webkit-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-.blockspring2 {
-    background-image: url('{% static "common/imgs/spring2.png"%}');
-    opacity: 0;
-    -webkit-animation: flickerAnimation 6s infinite;
-    -moz-animation: flickerAnimation 6s infinite;
-    -o-animation: flickerAnimation 6s infinite;
-    animation: flickerAnimation 6s infinite;
-}
-.blockcoffee {
-    background-image: url('{% static "common/imgs/controlcoffee.png"%}');
-    background-size: contain;
-}
-.blockduckrabbit {
-    background-image: url('{% static "common/imgs/DuckRabbit.png"%}');
-    background-size: contain;
-}
-.blockmri {
-    background-image: url('{% static "common/imgs/mri.jpg"%}');
-    background-position: 50% 40%
-}
-.bg-image {
-    height: 100%;
-}
-</style>
+<link rel="stylesheet" href="{% static 'common/css/research.css' %}">
 {% endblock %}
 
 {% block research %}active{% endblock %}
@@ -83,7 +13,7 @@
         <div class="col-9 offset-2 col-md-4 offset-md-0">
             <h1 class="display-4 animated fadeInLeft section-title">research</h1>
         </div>
-        <div class="col-9 offset-2 col-md-7 offset-md-0 animated fadeInRight topic-col block-text">
+        <div class="col-9 offset-2 col-md-7 offset-md-0 animated fadeInRight topic-col block-text responsive-text">
             <p>At every waking moment the human brain absorbs information, selectively filters it, and integrates
                 it into perceptions and memories. When presented with the same world, we can effortlessly engage
                 in many different activities depending on our goals. How does the brain flexibly coordinate these
@@ -100,8 +30,8 @@
         <div class="block-bg-image blockspring2"></div>
         <div class="col-4">
         </div>
-        <div class="col-7 animated fadeInRight block-text topic-col">
-            <h3>Networks and hubs</h3>
+        <div class="col-7 animated fadeInRight block-text topic-col responsive-text">
+            <h3 class="header-responsive-text">Networks and hubs</h3>
             <p>The brain is made up of different areas that flexibly interact as part of large-scale
                 systems or “networks”. In recent years, we have made enormous advances in understanding how these systems
                 are typically organized in humans. This platform allows us to ask exciting new questions, including: </p>
@@ -114,23 +44,23 @@
         </div>
     </div>
     <div class="row no-gutters align-items-center block-bg title">
-        <div class="col-3 offset-1 animated fadeInLeft block-text topic-col" id="block2">
-            <h3>Top-down control systems of the human brain</h3>
+        <div class="col-4 offset-1 animated fadeInLeft block-text topic-col responsive-text">
+            <h3 class="header-responsive-text">Top-down control systems of the human brain</h3>
             <p>“Control” refers to our ability to alter neural processing and actions depending on our goals. A number
                 of areas in the frontal and parietal lobes have been implicated in these processes. What differentiates these areas?
                 What control functions are they specialized in? How do they interact? Do these interactions change in different
                 contexts?</p>
         </div>
-        <div class="col-8 bg-image">
+        <div class="col-7 bg-image">
             <div class="block-bg-image blockcoffee"></div>
         </div>
     </div>
     <div class="row no-gutters align-items-center block-bg title">
-        <div class="col-7 bg-image">
+        <div class="col-6 bg-image">
             <div class="block-bg-image blockduckrabbit"></div>
         </div>
-        <div class="col-4 animated fadeInRight block-text topic-col" id="block3">
-            <h3>Top-down modulation of vision</h3>
+        <div class="col-5 animated fadeInRight block-text topic-col responsive-text">
+            <h3 class="header-responsive-text">Top-down modulation of vision</h3>
             <p>What do “control” systems control? In this line of work, we ask how our goals change the way we see the world.
                 There is abundant work demonstrating that attention to a visual stimulus changes various aspects of its representation,
                 including the gain, tuning, and reliability of responses. We ask: what systems-level mechanisms lead to these changes?
@@ -139,8 +69,8 @@
     </div>
     <div class="row no-gutters align-items-center block-bg title">
         <div class="block-bg-image blockmri"></div>
-        <div class="col-7 offset-1 animated fadeInLeft block-text topic-col" id="block4">
-            <h3>Methods development</h3>
+        <div class="col-7 offset-1 animated fadeInLeft block-text topic-col responsive-text">
+            <h3 class="header-responsive-text">Methods development</h3>
             <p>These exciting questions push us to new advances in methodologies, to tackle brain function more precisely and at a wide
                 range of spatiotemporal scales. Thus, our lab engages in a multitude of efforts to integrate existing methods and develop
                 new methodological and analytical approaches. Recent work has included advances in measuring individual variability,
