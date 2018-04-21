@@ -17,7 +17,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -25,27 +24,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vm+c$xxc#7om7#uzds9ynr3i@myq9zezb06%9mjfk-o67r#+!l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    DEBUG = (os.environ['DEBUG'] == "TRUE") # Get DEBUG variable
+except:
+    DEBUG = False
 if DEBUG: # Do these things if in DEBUG mode
     pass
 else: # Do these things when DEBUG is disabled
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = ['thawing-wave-13120.herokuapp.com','localhost']
-
+ALLOWED_HOSTS = ['grattonlabbackend.herokuapp.com','www.grattonlab.org','localhost']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
+    'common.apps.CommonConfig',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig'
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -84,12 +87,8 @@ WSGI_APPLICATION = 'labsite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'labbase',
-        'USER': 'labowner',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test.db'
     }
 }
 # Use the DATABASE_URL env variable
@@ -98,7 +97,7 @@ try:
         DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
         print('DATABASE has been set to heroku postgres.')
 except KeyError:
-    print('No PRODUCTION Variable found')
+    pass
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -124,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -136,17 +135,58 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-# Set default file storage
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# Set Dropbox OAUTH TOKEN and file storage only if defined
+try:
+    # set the token
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_TOKEN']
+    # Set default file storage
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    # Set Dropbox Path
+    DROPBOX_ROOT_PATH = 'caterina-website'
+    STATIC_MEDIA = False
+except KeyError:
+    print('Dropbox token not defined!')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+    STATIC_MEDIA = True
 
-# Set Dropbox OAUTH TOKEN
-DROPBOX_OAUTH2_TOKEN = 'vmL3v7wZeFIAAAAAAAAMF4Rvnk-xtUvWWdR7HxBsmbb_iYIZvmE-5NpDq6rJ4I5I'
+# Set ckeditor settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%'
+    }
+}
 
-# Set Dropbox Path
-DROPBOX_ROOT_PATH = '/App/'
+# Django suit config
+SUIT_CONFIG = {
+    #header
+    'ADMIN_NAME': 'Gratton Lab',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'h:i A',
+    #forms
+    'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    'CONFIRM_UNSAVED_CHANGES': True, # Default True
+    #menu
+    'SEARCH_URL': '',
+    'MENU_ICONS': {
+       'sites': 'icon-leaf',
+       'common': 'icon-th',
+       'auth': 'icon-lock',
+    },
+    'MENU_OPEN_FIRST_CHILD': True, # Default True
+    'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+        'sites',
+        'common',
+        'auth',
+        {'label': 'Go to site','url': '/'}
+    ),
+    #misc
+    'LIST_PER_PAGE': 15
+}
 
-# Set static and media directories
+# Set static directory
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')

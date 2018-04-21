@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('@dmin/', admin.site.urls),
     path('', include('common.urls'))
 ]
+
+if settings.STATIC_MEDIA:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
