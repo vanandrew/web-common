@@ -1,5 +1,5 @@
 # package requirements
-Django == 2.2.13
+Django == 2.2.18
 django-suit == 0.2.26
 Pillow == 7.1.0
 psycopg2 == 2.7.4
