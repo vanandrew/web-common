@@ -1,7 +1,7 @@
 # package requirements
 Django == 2.2.24
 django-suit == 0.2.26
-Pillow == 8.2.0
+Pillow == 9.0.1
 psycopg2 == 2.7.4
 gunicorn == 19.7.1
 dj-database-url == 0.5.0
